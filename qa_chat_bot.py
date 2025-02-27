@@ -17,8 +17,8 @@ def start_streamlit():
     initiate_session_state()
     
     # Fetch token and endpoint from environment variables
-    st.session_state.token = os.getenv("DATAROBOT_API_TOKEN")
-    st.session_state.endpoint = os.getenv("DATAROBOT_API_ENDPOINT")
+    st.session_state.token = os.getenv("token")
+    st.session_state.endpoint = os.getenv("endpoint")
 
     # Check if token and endpoint are available
     if not st.session_state.token or not st.session_state.endpoint:
