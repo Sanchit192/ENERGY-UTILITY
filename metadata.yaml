@@ -1,5 +1,0 @@
-runtimeParameterDefinitions:
-- fieldName: CUSTOM_METRIC_ID
-  type: string
-- fieldName: DEPLOYMENT_ID
-  type: deployment
