@@ -17,12 +17,13 @@ def start_streamlit():
     initiate_session_state()
     
     # Fetch token and endpoint from environment variables
-    st.session_state.token = os.getenv("token")
+    st.session_state.token = os.getenv("token")  # Make sure variable name matches exactly
     st.session_state.endpoint = os.getenv("endpoint")
+    st.session_state.deployment_id = os.getenv("deployment_id")
 
-    # Check if token and endpoint are available
+    # Check if token and endpoint exist
     if not st.session_state.token or not st.session_state.endpoint:
-        st.error("Missing API credentials. Please set `DATAROBOT_API_TOKEN` and `DATAROBOT_API_ENDPOINT` in your environment.")
+        st.error("Missing API credentials. Please set `token` and `endpoint` in your environment.")
         return
 
     try:
