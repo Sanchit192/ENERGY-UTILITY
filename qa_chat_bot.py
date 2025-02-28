@@ -13,30 +13,29 @@ from utils import add_new_prompt_message, initiate_session_state, get_deployment
 st.set_page_config(page_title=I18N_APP_NAME, page_icon=APP_FAVICON, layout=APP_LAYOUT,
                    initial_sidebar_state=SIDEBAR_DEFAULT_STATE)
 
-# List of US states (full names and abbreviations)
-US_STATES = {
-    "Alabama": "AL", "Alaska": "AK", "Arizona": "AZ", "Arkansas": "AR", "California": "CA", "Colorado": "CO", 
-    "Connecticut": "CT", "Delaware": "DE", "Florida": "FL", "Georgia": "GA", "Hawaii": "HI", "Idaho": "ID", 
-    "Illinois": "IL", "Indiana": "IN", "Iowa": "IA", "Kansas": "KS", "Kentucky": "KY", "Louisiana": "LA", 
-    "Maine": "ME", "Maryland": "MD", "Massachusetts": "MA", "Michigan": "MI", "Minnesota": "MN", "Mississippi": "MS", 
-    "Missouri": "MO", "Montana": "MT", "Nebraska": "NE", "Nevada": "NV", "New Hampshire": "NH", "New Jersey": "NJ", 
-    "New Mexico": "NM", "New York": "NY", "North Carolina": "NC", "North Dakota": "ND", "Ohio": "OH", "Oklahoma": "OK", 
-    "Oregon": "OR", "Pennsylvania": "PA", "Rhode Island": "RI", "South Carolina": "SC", "South Dakota": "SD", 
-    "Tennessee": "TN", "Texas": "TX", "Utah": "UT", "Vermont": "VT", "Virginia": "VA", "Washington": "WA", 
-    "West Virginia": "WV", "Wisconsin": "WI", "Wyoming": "WY"
-}
+# List of US states (only full names)
+US_STATES = [
+    "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
+    "Connecticut", "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", 
+    "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky", "Louisiana", 
+    "Maine", "Maryland", "Massachusetts", "Michigan", "Minnesota", "Mississippi", 
+    "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire", "New Jersey", 
+    "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio", "Oklahoma", 
+    "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota", 
+    "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", 
+    "West Virginia", "Wisconsin", "Wyoming"
+]
 
 def detect_state(user_input):
-    """Detects a US state from the user input while avoiding substring mismatches."""
+    """Detects a US state from the user input without considering abbreviations."""
     if not user_input:  
         return None
 
     user_input_lower = user_input.lower()
 
-    for state, abbr in US_STATES.items():
+    for state in US_STATES:
         # Use regex word boundary (\b) to avoid partial matches
-        if re.search(rf'\b{re.escape(state.lower())}\b', user_input_lower) or \
-           re.search(rf'\b{re.escape(abbr.lower())}\b', user_input_lower):
+        if re.search(rf'\b{re.escape(state.lower())}\b', user_input_lower):
             return state  # Return full state name
     
     return None
