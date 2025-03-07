@@ -59,7 +59,7 @@ def start_streamlit():
         if SHOW_SIDEBAR:
             with st.sidebar:
                 st.subheader('Sidebar Title')
-                st.write('Add your sidebar content here')
+                st.write('Add your sidebar content here ....')
 
         # If chatbot is ready
         if has_valid_deployment:
