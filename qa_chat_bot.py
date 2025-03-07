@@ -13,6 +13,8 @@ from utils import add_new_prompt_message, initiate_session_state, get_deployment
 st.set_page_config(page_title=I18N_APP_NAME, page_icon=APP_FAVICON, layout=APP_LAYOUT,
                    initial_sidebar_state=SIDEBAR_DEFAULT_STATE)
 
+load_dotenv() 
+
 # List of US states (only full names)
 US_STATES = [
     "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", 
